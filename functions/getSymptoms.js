@@ -5,16 +5,12 @@ const nhost = new NhostClient({
 });
 
 module.exports = (req, res) => {
-  (async () => {
-    const symptoms = await nhost.graphql.request(`
-      query {
-        symptom {
-          id
-          name
-        }
+  nhost.graphql.request(`
+    query {
+      symptom {
+        id
+        name
       }
-    `)
-  
-    res.status(200).send(symptoms.data);
-  })();
+    }
+  `).then(symptoms => res.status(200).send(symptoms.data));
 };
