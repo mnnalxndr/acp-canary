@@ -1,3 +1,6 @@
 module.exports = (req, res) => {
-  res.status(200).send(`User: ${req.query.userId} - Reporting symptom ${req.query.symptomId} - For service user ${req.query.serviceUserId}!`);
+  const [ userId, symptomId, serviceUserId ] = req.query;
+  res.status(200).send(`User: ${userId} - Reporting symptom ${symptomId} - For service user ${serviceUserId}!`);
+  res.status(200).send(`${JSON.stringify(req)}`);
+  res.status(200).send(`${JSON.stringify(res)}`);
 };
